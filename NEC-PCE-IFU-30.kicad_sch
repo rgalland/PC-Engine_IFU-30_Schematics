@@ -801,6 +801,15 @@
     (path "/0578f93e-ca38-43d5-ab59-174de13ad696/8ad6d19d-f281-4e7e-98bf-e68b8c2770eb"
       (reference "#PWR0220") (unit 1) (value "GND") (footprint "")
     )
+    (path "/16ed6a89-2253-4800-b858-7195f8e7cad5/0220ac67-2c38-4cdc-8c13-73781b1e2def"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/16ed6a89-2253-4800-b858-7195f8e7cad5/167cfdb7-fa3e-4f8a-a943-dded55c672eb"
+      (reference "#PWR?") (unit 1) (value "+5V") (footprint "")
+    )
+    (path "/6773dc59-1a0f-4ef1-9716-1306879c4c35/ac85026e-a829-4fab-9cd0-e927a8b80e4a"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
     (path "/16ed6a89-2253-4800-b858-7195f8e7cad5/e579e631-d771-4c4e-8737-93216687f533"
       (reference "C-CD") (unit 1) (value "SCSI_30P_CONN") (footprint "")
     )
@@ -871,7 +880,7 @@
       (reference "C20") (unit 1) (value "10u") (footprint "")
     )
     (path "/6773dc59-1a0f-4ef1-9716-1306879c4c35/a4495167-9776-4b5f-ade5-4848f380687e"
-      (reference "C21") (unit 1) (value "C") (footprint "")
+      (reference "C21") (unit 1) (value "11n") (footprint "")
     )
     (path "/6773dc59-1a0f-4ef1-9716-1306879c4c35/dbcc7708-d2ec-43b4-a1c0-a463afba7388"
       (reference "C22") (unit 1) (value "820p") (footprint "")
@@ -890,6 +899,9 @@
     )
     (path "/16ed6a89-2253-4800-b858-7195f8e7cad5/d45b52c4-e1a1-4819-8646-b0b6b8b0ea02"
       (reference "C34") (unit 1) (value "10n") (footprint "")
+    )
+    (path "/16ed6a89-2253-4800-b858-7195f8e7cad5/e631d4d3-bf66-4ae0-8176-cf63763d4cf9"
+      (reference "C35") (unit 1) (value "100n") (footprint "")
     )
     (path "/16ed6a89-2253-4800-b858-7195f8e7cad5/e8c05be7-11cb-4b81-bf40-9e9555de8395"
       (reference "C36") (unit 1) (value "10n") (footprint "")
@@ -946,10 +958,10 @@
       (reference "C135") (unit 1) (value "470u") (footprint "")
     )
     (path "/d1484c84-275c-4498-a17e-3c62a3d51fc3/976992fa-8045-43f7-a97b-2406feb006b1"
-      (reference "C136") (unit 1) (value "C") (footprint "")
+      (reference "C136") (unit 1) (value "15n") (footprint "")
     )
     (path "/d1484c84-275c-4498-a17e-3c62a3d51fc3/2845754d-07dd-4141-8c95-6a77fd82a9bd"
-      (reference "C137") (unit 1) (value "C") (footprint "")
+      (reference "C137") (unit 1) (value "15n") (footprint "")
     )
     (path "/16ed6a89-2253-4800-b858-7195f8e7cad5/6781af0e-1e3d-4cf4-b379-1ccdf078cfd7"
       (reference "CN6") (unit 1) (value "Conn_02x02_Odd_Even") (footprint "")

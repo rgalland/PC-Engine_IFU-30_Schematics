@@ -1544,7 +1544,6 @@
     )
   )
 
-
   (junction (at 59.055 172.72) (diameter 0) (color 0 0 0 0)
     (uuid 015c2e5c-3607-4f78-8226-8d9f0e897ca4)
   )
@@ -3245,7 +3244,7 @@
     (property "Reference" "C137" (id 0) (at 181.991 111.5603 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "C" (id 1) (at 181.991 114.0972 0)
+    (property "Value" "15n" (id 1) (at 181.991 114.0972 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (id 2) (at 180.0352 116.205 0)
@@ -4224,7 +4223,7 @@
     (property "Reference" "C136" (id 0) (at 219.456 111.5603 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "C" (id 1) (at 219.456 114.0972 0)
+    (property "Value" "15n" (id 1) (at 219.456 114.0972 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (id 2) (at 217.5002 116.205 0)
