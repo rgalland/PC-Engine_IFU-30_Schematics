@@ -2854,8 +2854,8 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 253a5322-bc00-497a-8db1-594b9133f36b)
   )
-  (text "text to paste into https://latex2png.com/ to have nice equations\n\nV_{BIAS} = \\frac{R20}{R20 + R19} \\times (9V - V_{D1} - V_{TR2 BE}) \\\\\nV_{BIAS} = \\frac{10k}{10k + 10k} \\times 7.9 \\\\\nV_{BIAS} = 1/2 \\times 7.9 \\\\\nV_{BIAS} = 3.95V\n\nV_{BIAS} = \\frac{V_{IFUL}/R16 + V_{IFUR}/R22 + V_{IFULR}/R21}{1/R16 + 1/R22 + 1/R21}\n\n3.95 = \\frac{V_{IFUL}/33k + V_{IFUR}/33K + V_{IFULR}/39K}{1/33k + 1/33k + 1/39k}\n\n13.29 = V_{IFUL} \\times 39k/33k + V_{IFUR} \\times 39k/33K + V_{IFULR}\n\nV_{IFULR} = 13.29 - V_{IFUR} \\times 39k/33K - V_{IFUR} \\times 39k/33K\n\nV_{IFULR} = 13.29 - V_{IFUR} \\times 1.18 - V_{IFUR} \\times 1.18\n\n\n"
-    (at 234.95 259.715 0)
+  (text "text to paste into https://latex2png.com/ to have nice equations\n\nV_{BIAS} = \\frac{R20}{R20 + R19} \\times (9V - V_{D1} - V_{TR2 BE}) \\\\\nV_{BIAS} = \\frac{10k}{10k + 10k} \\times 7.9 \\\\\nV_{BIAS} = 1/2 \\times 7.9 \\\\\nV_{BIAS} = 3.95V\n\nIC117A calculations\n\nAt DC level\n\\frac{V_{IFUL}/R16 + V_{IFUR}/R22 + V_{IFULR}/R21}{1/R16 + 1/R22 + 1/R21} = V_{BIAS} \\\\\n\\frac{3.95/33k + 3.95/33k + V_{IFULR}/39k}{1/33k + 1/33k + 1/39k} = 3.95 \\\\\nV_{IFULR} = 39k \\times 3.95 \\times (1/11.595k - 1/33K - 1/33K) \\\\\nV_{IFULR} = 3.95V\n\nAt AC level\n\\frac{V_{IFUL}/R16 + V_{IFUR}/R22 + V_{IFULR}/R21}{1/R16 + 1/R22 + 1/R21} = 0 \\\\\nV_{IFUL}/R16 + V_{IFUR}/R22 + V_{IFULR}/R21 = 0 \\\\\nV_{IFUL}/33k + V_{IFUR}/33k + V_{IFULR}/39k = 0 \\\\\nV_{IFULR} = - V_{IFUR} \\times 39/33 - V_{IFUR} \\times 39/33\n\nGain is 39/33 = 1.18"
+    (at 231.14 256.54 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 2da64e07-3381-4f2c-bcc9-c4c5f4b598b5)
   )
@@ -2864,8 +2864,13 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 2dfad4f5-42b4-46f9-9497-4378d28bb233)
   )
+  (text "text to paste into https://latex2png.com/ to have nice equations\n\nIC116A & IC116B calculations\n\nAt DC level\n\\frac{V_{IFUL}/R32 + V_{BIAS}/(R118+R31) + V_{AUDIOL}/R93}{1/R32 + 1/(R118+R31) + 1/R93} = V_{BIAS} \\\\\n\\frac{3.95/22k + 3.95/(15k+22k) + V_{AUDIOL}/62k} = 3.95 \\times (1/22k + 1/(15k+22k) + 1/62) \\\\\nV_{AUDIOL} = 62k \\times 3.95 \\times (1/11.285k - 1/22K - 1/37K) \\\\\nV_{IFULR} = 3.95V\n\nAt AC level\n\\frac{V_{IFUL}/R32 + V_{PCEL}/R31 + V_{AUDIOL}/R93}{1/R32 + 1/R31 + 1/R93} = 0 \\\\\nV_{IFUL}/R32 + V_{PCEL}/R31 + V_{AUDIOL}/R93 = 0 \\\\\nV_{AUDIOL} = - R93 \\times (V_{IFUL}/R32 + V_{PCEL}/R31) \\\\\nV_{AUDIOL} = - V_{IFUL} \\times 62/22 - V_{PCEL} \\times 62/22 \\\\\n\nGain is 62/22 = 2.818\n\nMultiplied by previous gain, we get 8.2/22 * 62/22 = 1.05 close enough to 1 (by 5%)"
+    (at 250.825 63.5 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 4d768310-7b51-4829-824a-1046524a7c45)
+  )
   (text "Note on transistors:\nA1175 = PNP\nA144 = PNP (re-biased)\nC2001 = NPN\nAIL3Z = NPN\nC2785 = NPN\n\n"
-    (at 240.03 54.61 0)
+    (at 168.91 33.655 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid a501abc0-5e8a-4ed4-b218-08afe564d5b5)
   )
@@ -2873,6 +2878,11 @@
     (at 44.45 219.075 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid b55e42d8-f2e2-42cb-b741-a6057a8827d6)
+  )
+  (text "text to paste into https://latex2png.com/ to have nice equations\n\nIC115A and B calculations\n\nAt DC level\n\\frac{V_{BIAS}/(15k+22k) + V_{BIAS}/28k + V_{IFU_R}/82k} {1/(15k+22k) + 1/28k + 1/8.2k}= V_{BIAS} \\\\\nV_{BIAS}/37k + V_{BIAS}/28k + V_{IFU_R}/8.2k = V_{BIAS}/5.4144k \\\\\nV_{IFU_R} = 3.95 \\times (1/5.4144k - 1/37k - 1/28k) \\times 8.2k \\\\\nV_{IFU_R} = 3.95V\n\nV_{IFU_L} = 3.95V\n\nAt AC level\n\\frac{V_{CD_L}/22k + V_{ADPCM}/28k + V_{FADE_L}/22k + V_{IFU_L}/8.2k}{1/22k + 1/28k + 1/22k + 1/8.2k} = 0 \\\\\nV_{IFU_L} = 8.2k \\times (-V_{CD_L}/22k - V_{ADPCM}/28k - V_{FADE_L}/22k) \\\\\nV_{IFU_L} = - V_{CD_L} \\times 8.2/22 - V_{ADPCM} \\times 8.2/28 - V_{FADE_L} \\times 8.2/22 \\\\\n\nV_{IFU_R} = - V_{CD_R} \\times 8.2/22 - V_{ADPCM} \\times 8.2/28 - V_{FADE_R} \\times 8.2/22 \\\\\n\nGain is 8.2/22 = 0.373"
+    (at 117.475 269.24 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid b887ae41-1058-4f13-8f56-580de85c53ad)
   )
 
   (label "PCE_VID" (at 305.435 168.91 0)
@@ -3409,7 +3419,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 3ba36b0d-fb43-483a-9757-03e73bb0e033)
     (property "Reference" "R91" (id 0) (at 231.775 135.6192 90))
-    (property "Value" "82k" (id 1) (at 231.775 138.1561 90))
+    (property "Value" "8.2k" (id 1) (at 231.775 138.1561 90))
     (property "Footprint" "" (id 2) (at 231.775 142.113 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3620,7 +3630,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 52d59f57-e0f9-44e6-a8d5-c7e7a1797d10)
     (property "Reference" "R92" (id 0) (at 229.235 168.0042 90))
-    (property "Value" "82k" (id 1) (at 229.235 170.5411 90))
+    (property "Value" "8.2k" (id 1) (at 229.235 170.5411 90))
     (property "Footprint" "" (id 2) (at 229.235 174.498 90)
       (effects (font (size 1.27 1.27)) hide)
     )
