@@ -6,8 +6,10 @@
 
   (title_block
     (title "NEC PC-Engine IFU-30")
-    (date "2022-10-21")
+    (date "2022-10-27")
     (rev "0.1")
+    (comment 1 "Author: Regis Galland")
+    (comment 2 "NEC IFU-30 PCB reverse engineered schematics")
   )
 
   (lib_symbols

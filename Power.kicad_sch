@@ -4,6 +4,14 @@
 
   (paper "A3")
 
+  (title_block
+    (title "NEC PC-Engine IFU-30")
+    (date "2022-10-27")
+    (rev "0.1")
+    (comment 1 "Author: Regis Galland")
+    (comment 2 "NEC IFU-30 PCB reverse engineered schematics")
+  )
+
   (lib_symbols
     (symbol "74xx:74HC86" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at 0 1.27 0)

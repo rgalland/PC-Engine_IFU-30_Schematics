@@ -4,6 +4,14 @@
 
   (paper "A4")
 
+  (title_block
+    (title "NEC PC-Engine IFU-30")
+    (date "2022-10-27")
+    (rev "0.1")
+    (comment 1 "Author: Regis Galland")
+    (comment 2 "NEC IFU-30 PCB reverse engineered schematics")
+  )
+
   (lib_symbols
     (symbol "Amplifier_Operational:TL072" (pin_names (offset 0.127)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at 0 5.08 0)
@@ -775,8 +783,8 @@
     (uuid fe1a45f3-70a7-4e0e-befc-f964754a1ef0)
   )
 
-  (text "text to paste into https://latex2png.com/ to have nice equations\n\nV_{R85} = \\frac{V_{DAC}/R84+5V/R86} {1/R84+1/R86+1/R85} \\\\\nV_{R85} = \\frac{V_{DAC}/270k+5/33k} {1/270k+1/33+1/180k} \\\\\nV_{R85} = V_{DAC}/270k \\times 25.276k + 5/33k \\times 25.276k \\\\\nV_{R85} = V_{DAC}/10.68 + 3.82V \\\\\n\nAt AC level\nV_{IC114BOUT}- = V_{IC114BOUT}+ = R88/(R88+R87) \\times V_{IC114BOUT} \\\\\nV_{IC114BOUT}- = 10/101 \\times V_{IC114BOUT}\\\\\n10.1 gain\n\nV_{R85} = 10/101 \\times V_{IC114BOUT} \\\\\nV_{IC114BOUT} = 10.1 \\times V_{DAC}/10.68 \\\\\nV_{IC114BOUT} = V_{DAC} \\times 0.9455 \\\\\n\nAt DC level\nV_{R85} = V_{IC114BOUT}- = V_{IC114BOUT}+ = V_{IC114BOUT} \\\\\nV_{IC114BOUT} = 3.82V \\\\\n1 gain (follower)\n\nC53 removes the DC bias, C21 filter high frequencies, C22 makes ADCPM_OUT=VBIAS at DC level\nand unity gain at AC level.\n"
-    (at 182.245 86.36 0)
+  (text "text to paste into https://latex2png.com/ to have nice equations\n\nV_{R85} = \\frac{V_{DAC}/R84+5V/R86} {1/R84+1/R86+1/R85} \\\\\nV_{R85} = \\frac{V_{DAC}/270k+5/33k} {1/270k+1/33+1/180k} \\\\\nV_{R85} = V_{DAC}/270k \\times 25.276k + 5/33k \\times 25.276k \\\\\nV_{R85} = V_{DAC}/10.68 + 3.82V \\\\\n\nAt AC level\nV_{IC114B-} = V_{IC114B+} = R88/(R88+R87) \\times V_{IC114BOUT} \\\\\nV_{IC114B-} = 10/101 \\times V_{IC114BOUT}\\\\\nV_{IC114BOUT} = 101/10 \\times V_{IC114B-}\\\\\n\n101/10 = 10.1 gain\n\nV_{R85} = 10/101 \\times V_{IC114BOUT} \\\\\nV_{IC114BOUT} = 10.1 \\times V_{DAC}/10.68 \\\\\nV_{IC114BOUT} = V_{DAC} \\times 0.9455 \\\\\n\nAt DC level\nV_{R85} = V_{IC114B-} = V_{IC114B+} = V_{IC114BOUT} \\\\\nV_{IC114BOUT} = 3.82V \\\\\nunity gain (follower)\n\nC53 removes the DC bias introduced by IC114B, C21 filters high frequencies, C22 makes ADCPM_OUT=VBIAS at DC level\nand unity gain at AC level.\n"
+    (at 161.925 90.17 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 6373ddde-3f95-44cc-94bc-9ba243630872)
   )

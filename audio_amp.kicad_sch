@@ -4,6 +4,14 @@
 
   (paper "A3")
 
+  (title_block
+    (title "NEC PC-Engine IFU-30")
+    (date "2022-10-27")
+    (rev "0.1")
+    (comment 1 "Author: Regis Galland")
+    (comment 2 "NEC IFU-30 PCB reverse engineered schematics")
+  )
+
   (lib_symbols
     (symbol "Amplifier_Operational:RC4558" (pin_names (offset 0.127)) (in_bom yes) (on_board yes)
       (property "Reference" "U" (id 0) (at 0 5.08 0)
@@ -2879,8 +2887,8 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid b55e42d8-f2e2-42cb-b741-a6057a8827d6)
   )
-  (text "text to paste into https://latex2png.com/ to have nice equations\n\nIC115A and B calculations\n\nAt DC level\n\\frac{V_{BIAS}/(15k+22k) + V_{BIAS}/28k + V_{IFU_R}/82k} {1/(15k+22k) + 1/28k + 1/8.2k}= V_{BIAS} \\\\\nV_{BIAS}/37k + V_{BIAS}/28k + V_{IFU_R}/8.2k = V_{BIAS}/5.4144k \\\\\nV_{IFU_R} = 3.95 \\times (1/5.4144k - 1/37k - 1/28k) \\times 8.2k \\\\\nV_{IFU_R} = 3.95V\n\nV_{IFU_L} = 3.95V\n\nAt AC level\n\\frac{V_{CD_L}/22k + V_{ADPCM}/28k + V_{FADE_L}/22k + V_{IFU_L}/8.2k}{1/22k + 1/28k + 1/22k + 1/8.2k} = 0 \\\\\nV_{IFU_L} = 8.2k \\times (-V_{CD_L}/22k - V_{ADPCM}/28k - V_{FADE_L}/22k) \\\\\nV_{IFU_L} = - V_{CD_L} \\times 8.2/22 - V_{ADPCM} \\times 8.2/28 - V_{FADE_L} \\times 8.2/22 \\\\\n\nV_{IFU_R} = - V_{CD_R} \\times 8.2/22 - V_{ADPCM} \\times 8.2/28 - V_{FADE_R} \\times 8.2/22 \\\\\n\nGain is 8.2/22 = 0.373"
-    (at 117.475 269.24 0)
+  (text "text to paste into https://latex2png.com/ to have nice equations\n\nIC115A and B calculations\n\nAt DC level\n\\frac{V_{BIAS}/(15k+22k) + V_{BIAS}/28k + V_{IFU_R}/82k} {1/(15k+22k) + 1/28k + 1/8.2k}= V_{BIAS} \\\\\nV_{BIAS}/37k + V_{BIAS}/28k + V_{IFU_R}/8.2k = V_{BIAS}/5.4144k \\\\\nV_{IFU_R} = 3.95 \\times (1/5.4144k - 1/37k - 1/28k) \\times 8.2k \\\\\nV_{IFU_R} = 3.95V\n\nV_{IFU_L} = 3.95V\n\nAt AC level\n\\frac{V_{CD_L}/22k + V_{ADPCM}/28k + V_{FADE_L}/22k + V_{IFU_L}/8.2k}{1/22k + 1/28k + 1/22k + 1/8.2k} = 0 \\\\\nV_{IFU_L} = 8.2k \\times (-V_{CD_L}/22k - V_{ADPCM}/28k - V_{FADE_L}/22k) \\\\\nV_{IFU_L} = - V_{CD_L} \\times 8.2/22 - V_{ADPCM} \\times 8.2/28 - V_{FADE_L} \\times 8.2/22 \\\\\n\nV_{IFU_R} = - V_{CD_R} \\times 8.2/22 - V_{ADPCM} \\times 8.2/28 - V_{FADE_R} \\times 8.2/22 \\\\\n\nGain is 8.2/22 = 0.373 for CD and 8.2/28 = 0.293 for ADPCM\n\nM51131 Inputs have a 150kohm resistance. This explains why ADPCM goes through 47k to maintain the \n22/28 ratio when cd and adpcm signal are fed directly to IC115 as 22/28 = 150/147.  "
+    (at 113.665 277.495 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid b887ae41-1058-4f13-8f56-580de85c53ad)
   )
