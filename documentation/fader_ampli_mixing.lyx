@@ -1,0 +1,1264 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Audio Fading, Mixing and Amplification
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Audio Mixing and Amplification
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename AudioMixingAndAmplification.png
+	lyxscale 80
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Audio Fading Circuit
+\end_layout
+
+\begin_layout Standard
+The ADPCM signal and the CD audio left and right channels can be faded out
+ at 2 different rates via register 180Fh; 2.5s or 6s.
+ In normal operation i.e.
+ when not fading is applied, TR6 (A144) is constantly saturated by pulling
+ the base to GND via R33 and this allows C12 to charge to 5V via R39.
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+When fading is enabled, the IC output (which I expect to be an open collector
+ output) to pull up the base to 5V and thus stop sauration.
+ This will have the effect of discharging C12 through R40 in fast fading
+ mode and through R40 and R41 in slow fading mode.
+ The fading mode is controlling TR7: when the IC pulls the base up, it is
+ saturated which makes it short R41 giving the fast fading mode.
+ When the IC output is floating, the base no longer receives current and
+ the transistor is open giving the slow fading mode.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+C12 Charging and Discharging
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename C12_ChargingDischarging.png
+	lyxscale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+C12 Charging
+\end_layout
+
+\begin_layout Standard
+The time constant for the charging of C12 is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau=R39\times C12=470\times47\times10^{-6}=22.09ms
+\]
+
+\end_inset
+
+It means that we can consider C12 fully charged after approximately 
+\begin_inset Formula $3\tau$
+\end_inset
+
+ or 66ms.
+ Therefore, the sound will recover pretty quickly as soon as fading is disabled.
+\end_layout
+
+\begin_layout Subsection
+C12 Discharging
+\end_layout
+
+\begin_layout Standard
+Discharging will happen at 2 different rates based on the state of TR7.
+ TR7 close = fast discharge through R40; TR7 opened = slow discharge through
+ R40 and R41.
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+The time constant for the fast discharging of C12 is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau_{1}=R40\times C12=39\times10^{3}\times47\times10^{-6}=1833ms
+\]
+
+\end_inset
+
+It means that we can consider C12 fully discharged after approximately 
+\begin_inset Formula $3\tau$
+\end_inset
+
+ or 5499ms.
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+The time constant for the slow discharging of C12 is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau_{2}=(R40+R41)\times C12=(39+82)\times10^{3}\times47\times10^{-6}=5687ms
+\]
+
+\end_inset
+
+It means that we can consider C12 fully discharged after approximately 
+\begin_inset Formula $3\tau$
+\end_inset
+
+ or 17061ms.
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+We can see that these values are a lot greater than what is mentioned in
+ the CD-ROM BIOS documentation which mentions 2.5s and 6s.
+ This is what what we will explain in the section covering the volume chip,
+ M51131L.
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Fast and Slow Discharge Graphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename R40C12.png
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename R40R41C12.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Graphs generated here!"
+target "https://www.redcrab-software.com/en/Calculator/Electrics/C-Discharge-State"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+BU4053 - Analogue Switch
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Analogue Switch
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename AnalogueSwitch.png
+	lyxscale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+IC4053 is a 3 channel 2:1 analogue switch.
+ Pin X, Y and Z are the inputs pins for the stereo signals from the CD-ROM
+ and the ADPCM signal.
+ ADPCM already has 3.9V biasing applied, however the CD-ROM signals are coupled
+ with C19 and C20 to remove any biasing that may be present from the CD-ROM
+ but then get biased to 3.9V via R53 and R52.
+ When FADE_SELn connected to pin A, B and C is high, the signals are passed
+ to the rest of the circuitry as is.
+ When FADE_SELn is low, the signals are fed to the volume control IC instead,
+ MM51131L.
+ Note that Inh is tied to GND to always enable it.
+ 
+\end_layout
+
+\begin_layout Subsection
+Register 180Fh
+\end_layout
+
+\begin_layout Standard
+This is the register that controls the fading.
+ From looking at the bios, there is only 1 place where this register is
+ written to with value 0Fh.
+ From looking at IC connections and using exisitng observations from Charles
+ MacDonald, the following conclusion can be made: Main IC P81 is FADE_SELn
+ and is connected to bit1, Main IC P80 is FADE_SPEED and is connected to
+ bit2, Main IC P79 is FADE_EN and is connected to bit3.
+ 
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Register 180Fh
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bit3:FADE_EN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bit2:FADE_SPEED
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bit1:FADE_SELn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Audio State
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No fading
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8 second fading
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No fading (but C12 is discharging slowly)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.5 second fading
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No fading (but C12 is discharging fast)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+M51131L - Volume Control IC
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+M51131L Attenuation against Volume Control Voltage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename M51131L_Attenuation.png
+	lyxscale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+With control pin (P12) connected to REF (5.2V), Volume 1 is applied to both
+ left and right channels called simultaneous volume mode in datasheet and
+ Volume 2 is actually used for balance control.
+ In this case, Volume 2 is set to Vref/2 which makes L and R volumes equal.
+ Attenuation is maximum when C12 voltage reaches 0.5V.
+ Based on C12 discharge rates the maximum attenuation will be reached in
+ 4.22s with 
+\begin_inset Formula $\tau_{1}$
+\end_inset
+
+ and 13.08s with 
+\begin_inset Formula $\tau_{2}$
+\end_inset
+
+.
+ The CD-BISO documentation mentions 2.5 and 6 seconds but Charles McDonald
+ mentions 2.5s and 8s which are more in-line with the calculations.
+ We can see that if we use the latter values, voltage at C12 reaches 1V
+ with 60dB attenuation from 4.2V (no attenuation) after 2.5s with 
+\begin_inset Formula $\tau_{1}$
+\end_inset
+
+ and 8s with 
+\begin_inset Formula $\tau_{2}$
+\end_inset
+
+ which implies that the BIOS documentation is inaccurate.
+\end_layout
+
+\begin_layout Section
+ADPCM and CD Audio Amplification
+\end_layout
+
+\begin_layout Subsection
+IC115A&B - Adders
+\end_layout
+
+\begin_layout Standard
+The ADPCM signal and the CD audio channels are fed to dual op-amp IC115
+ configured as an adder with negative gain.
+ From looking at the resistor values, we can see that that gain will be
+ less than 1 and that ADPCM signal will be amplified a bit less than the
+ CD audio channels.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+IC115A&B ADPCM and CD Audio Mixing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename IC115A&B.png
+	lyxscale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+At DC level, we will omit the audio signals and only include the biasing
+ voltages.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{V_{BIAS}/(R52+R30)+V_{BIAS}/R29+V_{IFU_{R}}/R92}{1/(R52+R30)+1/R29+1/R92}=V_{BIAS}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{3.9/(15k+22k)+3.9/27k+V_{IFU_{R}}/8.2k}{1/(15k+22k)+1/27k+1/8.2k}=3.9
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+3.9/37k+3.9/27k+V_{IFU_{R}}/8.2k=3.9/5.376k
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{IFU_{R}}=3.9\times(1/5.376k-1/37k-1/27k)\times8.2k
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+V_{IFU_{R}}=3.9V
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+V_{IFU_{L}}=3.9V
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+This confirms that biasing will be present on the output.
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+At AC level, we will ignore the biasing voltages to concentrate on the audio
+ signals.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{V_{CD_{R}}/R30+V_{ADPCM}/R29+V_{FADE_{R}}/R90+V_{IFU_{R}}/R92}{1/R30+1/R29+1/R90+1/R92}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{CD_{R}}/22k+V_{ADPCM}/27k+V_{FADE_{R}}/22k+V_{IFU_{R}}/8.2k=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{IFU_{R}}=-8.2k\times(V_{CD_{R}}/22k+V_{ADPCM}/27k+V_{FADE_{R}}/22k)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{IFU_{R}}=-\left(V_{CD_{R}}\times8.2/22+V_{ADPCM}\times8.2/27+V_{FADE_{R}}\times8.2/22\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{IFU_{L}}=-\left(V_{CD_{L}}\times8.2/22+V_{ADPCM}\times8.2/27+V_{FADE_{L}}\times8.2/22\right)
+\]
+
+\end_inset
+
+When not in fading mode, gain is 8.2/22 = 0.373 for CD audio channels and
+ 8.2/27 = 0.304 for ADPCM signal.
+ When fading is enabled, CD audio channels are conencted directly to the
+ M51131L inputs howver ADPCM goes through a 47k resitor.
+ I would expext this is due to the 150kohm resistance on the M51131L inputs
+ and therefore adding the 47k resistor in series maintains the 22/27 ratio
+ applied in normal mode between CD and ADPCM as 150/(47+150) is close to
+ 22/27.
+ 
+\end_layout
+
+\begin_layout Subsection
+IC117A - Adder
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+IC117A Configured as Adder
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename IC117A.png
+	lyxscale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+This opamp mixes the IFU signals (CD and ADPCM) to send then back as mono
+ to the PC-Engine to be present on the RF connector (which is always mono).
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+At DC level, we will omit the audio signals and only include the biasing
+ voltages.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{V_{IFUL}/R16+V_{IFUR}/R22+V_{IFULR}/R21}{1/R16+1/R22+1/R21}=V_{BIAS}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{3.9/33k+3.9/33k+V_{IFULR}/39k}{1/33k+1/33k+1/39k}=3.9
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{IFULR}=39k\times3.9\times(1/11.595k-1/33K-1/33K)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{IFULR}=3.9V
+\]
+
+\end_inset
+
+At AC level, we will ignore the biasing voltages to concentrate on the audio
+ signals.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{V_{IFUL}/R16+V_{IFUR}/R22+V_{IFULR}/R21}{1/R16+1/R22+1/R21}=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{IFUL}/33k+V_{IFUR}/33k+V_{IFULR}/39k=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{IFULR}=-V_{IFUR}\times39/33-V_{IFUR}\times39/33
+\]
+
+\end_inset
+
+Gain is 39/33 = 1.18 and signal is inverted which effectively cancels out
+ the inversion from the previous stage.
+\end_layout
+
+\begin_layout Subsection
+PCE Audio Signals
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PCE Audio Signals
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename PCE_Audio.png
+	lyxscale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+PC-Engine console left and right audio signals are fed to the IFU PCB in
+ order to be mixed witht the CD and ADPCM signals.
+ When the console is not inserted or not powered, TR21 and TR22 are saturated
+ takin gthese signals to ground probably to stop picking up noise.
+ C56 and C57 are coupling capacitors removing any DC.
+ Each channel has a passive low-pass filter with 
+\begin_inset Formula $f_{C}=1/2\pi RC=1/\left(2\pi\times1k\times15\times10^{-9}\right)=10612Hz$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+IC116A&B - Adders
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+IC116A&B Adders
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename IC116A&B.png
+	lyxscale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The purpose of these opamps are to mix the PCE audio signals with the IFU
+ audio signals.
+ IC116A&B are configured as an adder with negative gain.
+ From looking at the resistor values, we can see that that gain will be
+ greater than 1 in such way that it will restitute the CD audio amplitude.
+ ADCPM amplitude will be slightly less becaiuse of the previous stage.
+ 
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Newline linebreak
+\end_inset
+
+At DC level, we will omit the audio signals and only include the biasing
+ voltages.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{V_{IFUL}/R32+V_{BIAS}/(R118+R31)+V_{AUDIOL}/R93}{1/R32+1/(R118+R31)+1/R93}=V_{BIAS}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+3.9/22k+3.9/(15k+22k)+V_{AUDIOL}/62k=3.9\times(1/22k+1/(15k+22k)+1/62)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{AUDIOL}=62k\times3.9\times(1/11.285k-1/22K-1/37K)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+V_{IFULR}=3.9V
+\]
+
+\end_inset
+
+At AC level, we will ignore the biasing voltages to concentrate on the audio
+ signals.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{V_{IFUL}/R32+V_{PCEL}/R31+V_{AUDIOL}/R93}{1/R32+1/R31+1/R93}=0
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+V_{IFUL}/R32+V_{PCEL}/R31+V_{AUDIOL}/R93=0
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+V_{AUDIOL}=-R93\times(V_{IFUL}/R32+V_{PCEL}/R31)
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+V_{AUDIOL}=-V_{IFUL}\times62/22-V_{PCEL}\times62/22
+\]
+
+\end_inset
+
+ Gain is 62/22 = 2.818.
+ Multiplied by previous gain, we get 
+\begin_inset Formula $8.2/22\times62/22=1.05$
+\end_inset
+
+ close enough to 1 (by 5%).
+ Before the signals leave the board, TR4 and TR3 can kill the signals when
+ AUDIO_ENn is high.
+ This can come from various sources like 5V not present, PC-Engine not plugged
+ in or main IC disabling audio.
+ No documentation explain how the latter could be achieved.
+ 
+\end_layout
+
+\end_body
+\end_document
