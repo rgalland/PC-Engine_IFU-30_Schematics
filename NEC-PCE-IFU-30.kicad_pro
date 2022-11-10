@@ -124,7 +124,13 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [],
+    "erc_exclusions": [
+      "pin_to_pin|2628900|1397000|d487e893-b400-48f2-8a3a-97d63966f194|abe8a0d6-30f2-4cac-8d0a-c518df96f849",
+      "pin_to_pin|2628900|1422400|0dc36db0-5771-4578-bc37-69cf0048b98d|abe8a0d6-30f2-4cac-8d0a-c518df96f849",
+      "pin_to_pin|2628900|1473200|9b1b5c25-8105-483f-9d24-a8c53fda836b|abe8a0d6-30f2-4cac-8d0a-c518df96f849",
+      "pin_to_pin|2628900|1498600|6a22c9ac-4bea-465b-9a01-891524ae6ced|abe8a0d6-30f2-4cac-8d0a-c518df96f849",
+      "pin_to_pin|2628900|1524000|4860af38-1b05-4dc5-85dc-63f94e531466|abe8a0d6-30f2-4cac-8d0a-c518df96f849"
+    ],
     "meta": {
       "version": 0
     },
@@ -179,7 +185,7 @@
         0,
         0,
         1,
-        1,
+        0,
         2,
         1,
         1,
@@ -231,7 +237,7 @@
         0,
         0,
         0,
-        1,
+        0,
         0,
         0,
         1,
@@ -319,7 +325,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "similar_labels": "warning",
       "unannotated": "error",
