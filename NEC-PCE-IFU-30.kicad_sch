@@ -319,6 +319,18 @@
     )
   )
 
+  (sheet (at 43.18 78.105) (size 32.385 19.05) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid) (color 0 0 0 0))
+    (fill (color 0 0 0 0.0000))
+    (uuid 86a71b1a-8204-43be-a56e-bd6873a052ba)
+    (property "Sheet name" "Unused Expansion Port Connections" (id 0) (at 43.18 77.3934 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheet file" "Unused.kicad_sch" (id 1) (at 43.18 97.7396 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+  )
+
   (sheet (at 163.195 52.07) (size 33.655 54.61) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 0))
     (fill (color 0 0 0 0.0000))
@@ -381,6 +393,7 @@
     (path "/16ed6a89-2253-4800-b858-7195f8e7cad5" (page "3"))
     (path "/0578f93e-ca38-43d5-ab59-174de13ad696" (page "4"))
     (path "/d1484c84-275c-4498-a17e-3c62a3d51fc3" (page "5"))
+    (path "/86a71b1a-8204-43be-a56e-bd6873a052ba" (page "6"))
   )
 
   (symbol_instances
@@ -795,8 +808,11 @@
     (path "/6773dc59-1a0f-4ef1-9716-1306879c4c35/fa3d46a0-4791-4443-9267-1a1650e27319"
       (reference "#PWR0225") (unit 1) (value "GND") (footprint "")
     )
+    (path "/16ed6a89-2253-4800-b858-7195f8e7cad5/b0219956-d897-442f-9032-332e90d7c3f8"
+      (reference "#PWR0226") (unit 1) (value "GND") (footprint "")
+    )
     (path "/d1484c84-275c-4498-a17e-3c62a3d51fc3/97a504e3-b65a-4f55-a0f0-08565693b9e7"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+      (reference "#PWR0227") (unit 1) (value "GND") (footprint "")
     )
     (path "/16ed6a89-2253-4800-b858-7195f8e7cad5/e579e631-d771-4c4e-8737-93216687f533"
       (reference "C-CD1") (unit 1) (value "SCSI_30P_CONN") (footprint "")
@@ -1367,6 +1383,9 @@
     )
     (path "/0578f93e-ca38-43d5-ab59-174de13ad696/10446f9a-2b2b-4b82-8009-7be59b975fb3"
       (reference "SPC-E1") (unit 4) (value "PCE-EXPANSION-CONN") (footprint "")
+    )
+    (path "/86a71b1a-8204-43be-a56e-bd6873a052ba/19f8b08c-3293-427c-9636-e5c2aa2e68b8"
+      (reference "SPC-E1") (unit 5) (value "PCE-EXPANSION-CONN") (footprint "")
     )
     (path "/0578f93e-ca38-43d5-ab59-174de13ad696/295c8cb7-bc56-4176-ae26-34755bafa866"
       (reference "TR1") (unit 1) (value "Q_PNP_ECB") (footprint "")
