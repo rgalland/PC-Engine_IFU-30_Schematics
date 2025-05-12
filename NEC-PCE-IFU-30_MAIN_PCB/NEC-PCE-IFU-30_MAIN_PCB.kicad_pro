@@ -459,7 +459,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "NEC-PCE-IFU-30_MAIN_PCB.kicad_pro.kicad_pro",
+    "filename": "NEC-PCE-IFU-30_MAIN_PCB.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -603,7 +603,7 @@
       "workbook_filename": ""
     },
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": "Output/Schematics/${REVISION}",
     "space_save_all_events": true,
     "spice_adjust_passive_values": false,
     "spice_current_sheet_as_root": false,

@@ -28,8 +28,8 @@ NEC-PCE-IFU-30_RAM_PCB/NEC-PCE-IFU-30_RAM_PCB-backups
 *.csv
 
 # no layout
-NEC-PCE-IFU-30_MAIN_PCB.kicad_pro.kicad_pcb
-NEC-PCE-IFU-30_RAM_PCB.kicad_pro.kicad_pcb
+NEC-PCE-IFU-30_MAIN_PCB.kicad_pcb
+NEC-PCE-IFU-30_RAM_PCB.kicad_pcb
 
 # duplicate libraries in individual projects
 NEC-PCE-IFU-30_MAIN_PCB/libs

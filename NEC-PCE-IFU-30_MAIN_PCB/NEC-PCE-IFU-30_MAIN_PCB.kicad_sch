@@ -475,7 +475,7 @@
 			)
 		)
 		(instances
-			(project "NEC-PCE-IFU-30_MAIN_PCB.kicad_pro"
+			(project "NEC-PCE-IFU-30_MAIN_PCB"
 				(path "/93dbf9aa-1076-45ce-b532-cda24d01521d"
 					(page "4")
 				)
@@ -647,7 +647,7 @@
 			)
 		)
 		(instances
-			(project "NEC-PCE-IFU-30_MAIN_PCB.kicad_pro"
+			(project "NEC-PCE-IFU-30_MAIN_PCB"
 				(path "/93dbf9aa-1076-45ce-b532-cda24d01521d"
 					(page "3")
 				)
@@ -749,7 +749,7 @@
 			)
 		)
 		(instances
-			(project "NEC-PCE-IFU-30_MAIN_PCB.kicad_pro"
+			(project "NEC-PCE-IFU-30_MAIN_PCB"
 				(path "/93dbf9aa-1076-45ce-b532-cda24d01521d"
 					(page "2")
 				)
@@ -791,7 +791,7 @@
 			)
 		)
 		(instances
-			(project "NEC-PCE-IFU-30_MAIN_PCB.kicad_pro"
+			(project "NEC-PCE-IFU-30_MAIN_PCB"
 				(path "/93dbf9aa-1076-45ce-b532-cda24d01521d"
 					(page "6")
 				)
@@ -942,7 +942,7 @@
 			)
 		)
 		(instances
-			(project "NEC-PCE-IFU-30_MAIN_PCB.kicad_pro"
+			(project "NEC-PCE-IFU-30_MAIN_PCB"
 				(path "/93dbf9aa-1076-45ce-b532-cda24d01521d"
 					(page "5")
 				)
