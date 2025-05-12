@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "NEC-PCE-IFU-30_RAM_PCB")(type "KiCad")(uri "${KIPRJMOD}/libs/NEC-PCE-IFU-30_RAM_PCB.pretty")(options "")(descr ""))
+)
