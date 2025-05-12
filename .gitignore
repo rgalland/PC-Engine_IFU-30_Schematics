@@ -13,7 +13,8 @@ _autosave-*
 *-save.pro
 *-save.kicad_pcb
 fp-info-cache
-NEC-PCE-IFU-30-backups
+NEC-PCE-IFU-30_MAIN_PCB-backups
+NEC-PCE-IFU-30_RAM_PCB-backups
 
 # Netlist files (exported from Eeschema)
 *.net
@@ -27,5 +28,10 @@ NEC-PCE-IFU-30-backups
 *.csv
 
 # no layout
-NEC-PCE-IFU-30.kicad_pcb
+NEC-PCE-IFU-30_MAIN_PCB.kicad_pro.kicad_pcb
+NEC-PCE-IFU-30_RAM_PCB.kicad_pro.kicad_pcb
+
+# duplicate libraries in individual projects
+NEC-PCE-IFU-30_MAIN_PCB/libs
+NEC-PCE-IFU-30_RAM_PCB/libs
 
